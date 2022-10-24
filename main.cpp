@@ -1,51 +1,68 @@
-#include<random>
 #include<stdio.h>
-#include<windows.h>
-#include<functional>
+#include<list>
+#include<vector>
 
-enum NUMBER
-{
-	EVEN_NUMBER,
-	ODD_NUMBER
-};
-
-//乱数シード生成器
-static std::random_device seed_gen;
-//メルセンヌツイスター
-static std::mt19937_64 engine(seed_gen());
-//乱数範囲
-static std::uniform_int_distribution<int> num(EVEN_NUMBER, ODD_NUMBER);
 
 int main()
 {
-	printf("\n「丁半博打」0キー:偶数 1キー:奇数\n");
-
-	//ラムダ式
-	std::function<void(int)> fx = [](int number)
-	{
-		if (number == num(engine)) printf("当たり！\n");
-		else                       printf("はずれ…\n");
+	//1970
+	std::list<const char*> stations1970{
+		"komagome","tabata","nippori","uguisudani","ueno","okachimachi"
+		,"akihabara","kanda","tokyo","yurakucho","shimbashi"
+		,"hamamatsucho","tamachi","shinagawa","osaki","gotanda"
+		,"meguro","ebisu","shibuya","harajuku","yoyogi","shinjuku"
+		,"shin-okubo","takadanobaba","mejiro","ikebukuro","otsuka"
+		,"sugamo"
 	};
+	//イテレーター
+	std::list<const char*>::iterator itr = stations1970.begin();
 
-	std::function<void(std::function<void(int)>, int, int)> Gambling
-		= [](std::function<void(int)> fx, int number, int second)
+
+	//2019
+	std::list<const char*> stations2019 = stations1970;
+	//イテレーター
+	std::list<const char*>::iterator itr2 = stations2019.begin();
+	std::advance(itr2, 2);
+	itr2 = stations2019.insert(itr2, "nishinippori");
+
+
+	//2022
+	std::list<const char*> stations2022 = stations2019;
+	//イテレーター
+	std::list<const char*>::iterator itr3 = stations2022.begin();
+	std::advance(itr3, 14);
+	itr3 = stations2022.insert(itr3, "takanawa gateway");
+
+
+	//描画
+	//1970
+	printf("\n1970\n");
+	for (int i = 0; i < stations1970.size(); i++)
 	{
-		second *= 1000;
+		printf("%s,", *itr);
+		if (i % 5 == 4)printf("\n");
+		itr++;
+	}
 
-		Sleep(second);
+	//2019
+	itr2 = stations2019.begin();
+	printf("\n2019\n");
+	for (int i = 0; i < stations2019.size(); i++)
+	{
+		printf("%s,", *itr2);
+		if (i % 5 == 4)printf("\n");
+		itr2++;
+	}
 
-		fx(number);
-	};
-
-
-	//入力
-	int number = 0;
-	scanf_s("%d", &number);
-
-	const int waitTime = 3;
-	//関数
-	Gambling(fx, number, waitTime);
-
+	//2022
+	itr3 = stations2022.begin();
+	printf("\n2022\n");
+	for (int i = 0; i < stations2022.size(); i++)
+	{
+		printf("%s,", *itr3);
+		if (i % 5 == 4)printf("\n");
+		itr3++;
+	}
 
 	return 0;
 }
