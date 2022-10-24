@@ -1,42 +1,43 @@
-#include<stdio.h>
+#include <stdio.h>
+#include<iostream>
+#include<list>
 
-template<typename Type>
-Type Min(Type a, Type b)
+int RecursiveWage(int n, int recursiveWage)
 {
-	if (a <= b) { return a };
+	if (n <= 0) return 0;
 
-	return b;
+	return recursiveWage + RecursiveWage(n - 1, recursiveWage * 2 - 50);
 }
-
-//char型の時
-template<>
-char Min(char a, char b)
-{
-	printf("数字以外は代入できません\n");
-
-	return 0;
-}
-
 
 int main()
 {
-	int a = 1, b = 2;
+	//時給
+	const int recursiveWage = 100;
+	const int wage = 1072;
 
-	float af = 3.0f, bf = 1.0f;
+	int recursiveTortal = 0;
+	int normalTortal = 0;
 
-	double ad = -1.0, bd = -10.0;
+	//時間
+	int hour = 0;
 
-	char ac = 'a', bc = 'b';
 
-	//処理
-	printf("%d\n", Min<int>(a, b));
+	while (true)
+	{
+		hour++;
 
-	printf("%f\n", Min<float>(af, bf));
+		//比較して、再帰的な方が儲かったら抜ける
+		if (RecursiveWage(hour, recursiveWage) > wage * hour)
+		{
+			recursiveTortal = RecursiveWage(hour, recursiveWage);
+			normalTortal = wage * hour;
 
-	printf("%lf\n", Min<double>(ad, bd));
+			//抜ける
+			break;
+		}
+	}
 
-	Min<char>(ac, bc);
-	
+	printf("%d時間働いたら再帰的な時給が儲かる\n再帰的な時給の合計:%d\n普通の時給の合計:%d\n", hour, recursiveTortal, normalTortal);
 
 	return 0;
 }
