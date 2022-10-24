@@ -1,43 +1,54 @@
-#include <stdio.h>
-#include<iostream>
-#include<list>
+#include<random>
+#include<stdio.h>
+#include<windows.h>
 
-int RecursiveWage(int n, int recursiveWage)
+enum NUMBER
 {
-	if (n <= 0) return 0;
+	EVEN_NUMBER,
+	ODD_NUMBER
+};
 
-	return recursiveWage + RecursiveWage(n - 1, recursiveWage * 2 - 50);
+
+//乱数シード生成器
+static std::random_device seed_gen;
+//メルセンヌツイスター
+static std::mt19937_64 engine(seed_gen());
+//乱数範囲
+static std::uniform_int_distribution<int> num(EVEN_NUMBER, ODD_NUMBER);
+
+
+typedef void (*PFunc)(int);
+
+void CallBack(int number)
+{
+	if (number == num(engine)) printf("当たり！\n");
+	else                       printf("はずれ…\n");
+}
+
+void Gambling(PFunc p, int number, int second)
+{
+	second *= 1000;
+
+	Sleep(second);
+
+	p(number);
 }
 
 int main()
 {
-	//時給
-	const int recursiveWage = 100;
-	const int wage = 1072;
+	printf("\n「丁半博打」　0キー:偶数 1キー:奇数\n");
 
-	int recursiveTortal = 0;
-	int normalTortal = 0;
+	//関数ポインタ
+	PFunc p = &CallBack;
 
-	//時間
-	int hour = 0;
+	//入力
+	int number = 0;
+	scanf_s("%d", &number);
 
+	const int waitTime = 3;
+	//関数
+	Gambling(p, number, waitTime);
 
-	while (true)
-	{
-		hour++;
-
-		//比較して、再帰的な方が儲かったら抜ける
-		if (RecursiveWage(hour, recursiveWage) > wage * hour)
-		{
-			recursiveTortal = RecursiveWage(hour, recursiveWage);
-			normalTortal = wage * hour;
-
-			//抜ける
-			break;
-		}
-	}
-
-	printf("%d時間働いたら再帰的な時給が儲かる\n再帰的な時給の合計:%d\n普通の時給の合計:%d\n", hour, recursiveTortal, normalTortal);
 
 	return 0;
 }
