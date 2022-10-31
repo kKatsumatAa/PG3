@@ -9,13 +9,6 @@ typedef struct cell
 
 }CELL;
 
-typedef struct cellstr
-{
-	const char* str;
-	struct cellstr* next = nullptr;//自己参照構造体
-
-}CELLSTR;
-
 void Create(CELL* cellStart, int insertNum)
 {
 	CELL* newCell;
@@ -45,6 +38,42 @@ void Index(CELL* cellStart)
 	printf("%d\n", cellStart->val);
 }
 
+//----------------------------------------
+typedef struct cellstr
+{
+	const char* str;
+	struct cellstr* next = nullptr;//自己参照構造体
+
+}CELLSTR;
+
+void Create(CELLSTR* cellStart, const char* insertStr)
+{
+	CELLSTR* newCell;
+	//新規作成するセル分のメモリを確保
+	newCell = (CELLSTR*)malloc(sizeof(CELLSTR));
+
+	newCell->str = insertStr;
+	newCell->next = nullptr;
+
+	//最後のセルのアドレスの一つ目の処理は引数から持ってきた
+	//リストのうち最初のセルのアドレスが該当する
+	while (cellStart->next != nullptr)
+	{
+		cellStart = cellStart->next;
+	}
+	cellStart->next = newCell;
+}
+
+void Index(CELLSTR* cellStart)
+{
+	//最後のcellになるまで出力
+	while (cellStart->next != nullptr)
+	{
+		printf("%s\n", cellStart->str);
+		cellStart = cellStart->next;
+	}
+	printf("%s\n", cellStart->str);
+}
 
 int main()
 {
@@ -57,6 +86,15 @@ int main()
 	}
 
 	Index(&cellStart);
+
+	//-------------------------
+	CELLSTR cellStrStart;
+	cellStrStart.str = "パパ";
+	Create(&cellStrStart, "ママ");
+	Create(&cellStrStart, "ポチex");
+	Create(&cellStrStart, "タマ大魔王");
+
+	Index(&cellStrStart);
 
 	return 0;
 }
