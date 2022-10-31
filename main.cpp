@@ -9,6 +9,13 @@ typedef struct cell
 
 }CELL;
 
+void Create(CELL* cellStart, int insertNum)
+{
+	CELL* newCell;
+	//V‹Kì¬‚·‚éƒZƒ‹•ª‚Ìƒƒ‚ƒŠ‚ğŠm•Û
+	newCell = (CELL*)malloc(sizeof(CELL));
+}
+
 
 int main()
 {
