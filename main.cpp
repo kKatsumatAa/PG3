@@ -19,7 +19,7 @@ static std::uniform_int_distribution<int> num(EVEN_NUMBER, ODD_NUMBER);
 
 typedef void (*PFunc)(int);
 
-void CallBack(int number)
+void ShowResult(int number)
 {
 	if (number == num(engine)) printf("当たり！\n");
 	else                       printf("はずれ…\n");
@@ -39,7 +39,7 @@ int main()
 	printf("\n「丁半博打」　0キー:偶数 1キー:奇数\n");
 
 	//関数ポインタ
-	PFunc p = &CallBack;
+	PFunc p = &ShowResult;
 
 	//入力
 	int number = 0;
