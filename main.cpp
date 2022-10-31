@@ -21,7 +21,7 @@ int main()
 	printf("\n「丁半博打」0キー:偶数 1キー:奇数\n");
 
 	//ラムダ式
-	std::function<void(int)> fx = [](int number)
+	std::function<void(int)> ShowResult = [](int number)
 	{
 		if (number == num(engine)) printf("当たり！\n");
 		else                       printf("はずれ…\n");
@@ -44,7 +44,7 @@ int main()
 
 	const int waitTime = 3;
 	//関数
-	Gambling(fx, number, waitTime);
+	Gambling(ShowResult, number, waitTime);
 
 
 	return 0;
