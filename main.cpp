@@ -27,7 +27,7 @@ int main()
 		else                       printf("ÇÕÇ∏ÇÍÅc\n");
 	};
 
-	std::function<void(std::function<void(int)>, int, int)> Gambling
+	std::function<void(std::function<void(int)>, int, int)> SetTimeOut
 		= [](std::function<void(int)> fx, int number, int second)
 	{
 		second *= 1000;
@@ -44,7 +44,7 @@ int main()
 
 	const int waitTime = 3;
 	//ä÷êî
-	Gambling(ShowResult, number, waitTime);
+	SetTimeOut(ShowResult, number, waitTime);
 
 
 	return 0;
