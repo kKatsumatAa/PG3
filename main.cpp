@@ -25,7 +25,7 @@ void ShowResult(int number)
 	else                       printf("‚Í‚¸‚êc\n");
 }
 
-void Gambling(PFunc p, int number, int second)
+void SetTimeOut(PFunc p, int number, int second)
 {
 	second *= 1000;
 
@@ -47,7 +47,7 @@ int main()
 
 	const int waitTime = 3;
 	//ŠÖ”
-	Gambling(p, number, waitTime);
+	SetTimeOut(p, number, waitTime);
 
 
 	return 0;
