@@ -152,6 +152,8 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellManager.h" />
     <ClInclude Include="DisplayState.h" />
+    <ClInclude Include="EditState.h" />
+    <ClInclude Include="InsertState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

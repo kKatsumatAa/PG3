@@ -20,6 +20,10 @@ private:
 	CellState* cellState = nullptr;
 	CELL* cell = nullptr;
 
+	//‘}“ü—p
+	int num = 0;
+	int insertNum = 0;
+
 public:
 	CellManager();
 	~CellManager();
@@ -28,6 +32,11 @@ public:
 	void Draw();
 
 	CELL* GetCell() { return cell; }
+	int* GetNum() { return &num; }
+	int* GetInsertNum() { return &insertNum; }
+
+	void SetNum(int num) { this->num = num; }
+	void SetInsertNum(int num) { this->insertNum = num; }
 
 	void ChangeState(CellState* cellState);
 };
