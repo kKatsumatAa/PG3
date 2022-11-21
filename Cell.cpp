@@ -1,12 +1,13 @@
 #include "Cell.h"
+#include <string>
 
-void Create(CELL* currentCell, int insertNum)
+void Create(CELL* currentCell, const char* insertNum)
 {
 	CELL* newCell;
 	//新規作成するセル分のメモリを確保
 	newCell = (CELL*)malloc(sizeof(CELL));
 
-	newCell->val = insertNum;
+	strcpy_s(newCell->val, insertNum);
 	//配置する場所にもともとあったセルのアドレスを入れる
 	newCell->prev = currentCell;
 	//配置する場所にもともとあったセルの、次にあるセルのアドレスを入れる
@@ -33,7 +34,7 @@ void Index(CELL* cellStart)
 		cellStart = cellStart->next;
 		printf("no:%d ", no);
 		printf("prev:%p ", cellStart->prev);
-		printf("val:%5d ", cellStart->val);//五桁右揃え
+		printf("val:%s ", cellStart->val);
 		printf("this:(%p) ", cellStart);
 		printf("next:%p \n", cellStart->next);
 		no++;
@@ -91,7 +92,7 @@ void DeleteCell(CELL* cellStart, int cellNum)
 	delete cellStart;
 }
 
-void EditCell(CELL* cellStart, int cellNum, int insertNum)
+void EditCell(CELL* cellStart, int cellNum, const char* insertNum)
 {
 	//cellNumの回数分進む
 	for (int i = 0; i < cellNum; i++)
@@ -108,7 +109,7 @@ void EditCell(CELL* cellStart, int cellNum, int insertNum)
 	}
 
 	//中身を変える
-	cellStart->val = insertNum;
+	strcpy_s(cellStart->val, insertNum);
 }
 
 int GetCellSize(CELL* cellStart)

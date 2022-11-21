@@ -20,10 +20,12 @@ private:
 	CellState* cellState = nullptr;
 	CELL* cell = nullptr;
 
-	//挿入用
+	//挿入用要素番号
 	int num = 0;
 	//挿入用
-	int insertNum = 0;
+	const char* insertStr;
+	//順番指定用
+	int order[100];
 
 public:
 	CellManager();
@@ -34,10 +36,14 @@ public:
 
 	CELL* GetCell() { return cell; }
 	int* GetNum() { return &num; }
-	int* GetInsertNum() { return &insertNum; }
+	int* GetOrder() { return order; }
+	const char* GetInsertStr() { return insertStr; }
 
 	void SetNum(int num) { this->num = num; }
-	void SetInsertNum(int num) { this->insertNum = num; }
+	void SetInsertStr(const char* str) { this->insertStr = str; }
+
+	//オーダーをクリア
+	void ClearOrder();
 
 	void ChangeState(CellState* cellState);
 };

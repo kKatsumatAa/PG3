@@ -1,4 +1,5 @@
 #include"DisplayState.h"
+#include<string>
 
 //-------------------------------------------------------------
 void DisplayState::Update()
@@ -67,8 +68,76 @@ void AllDisplay::Draw()
 //--------------------------------------------------
 void OrderDisplay::Update()
 {
+	cellManager->ClearOrder();
+
+	int num = 0;
+
+
+	int i = 0;
+	while (true)
+	{
+		scanf_s("%d", &num);
+		printf(",");
+
+		if (num == -1)
+		{
+			break;
+		}
+
+		cellManager->GetOrder()[i] = num;
+		i++;
+	}
+
+	if (cellManager->GetOrder()[0])
+	{
+		cellManager->ChangeState(new OrderDisplay2);
+	}
 }
 
 void OrderDisplay::Draw()
 {
+	printf("[順番を指定して要素を表示]\n");
+	printf("表示したい要素の順番を指定してください。[-1]で確定。\n");
+	printf("\n\n-\n");
+}
+
+//-----------------------------------------------------------------
+void OrderDisplay2::Update()
+{
+	int num = 0;
+
+	scanf_s("%d", &num);
+
+	switch (num)
+	{
+	case 1:
+		cellManager->ChangeState(new DisplayState);
+		break;
+	case 2:
+		cellManager->ChangeState(new InitialState);
+		break;
+	}
+}
+
+void OrderDisplay2::Draw()
+{
+	printf("{\n");
+
+	int i = 0;
+	while (true)
+	{
+		if (cellManager->GetOrder()[i] == 0) { break; }
+
+		printf("no:%d %s\n", cellManager->GetOrder()[i],
+			GetInsertCellAddres(cellManager->GetCell(), cellManager->GetOrder()[i] + 1)->val);
+
+		i++;
+	}
+
+	printf("}\n");
+
+	printf("\n------------------------------------------------------\n");
+	printf("1.要素の表示に戻る\n");
+	printf("2.要素の操作に戻る\n");
+	printf("-\n\n");
 }

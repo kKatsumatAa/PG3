@@ -19,13 +19,17 @@ void InsertState::Draw()
 //------------------------------------------------------------------
 void InsertState2::Update()
 {
-	scanf_s("%d", cellManager->GetInsertNum());
+	char str[128] = { 0 };
+
+	scanf_s("%s", str, 128);
+
+	cellManager->SetInsertStr(str);
 
 	CELL* ptr;
 	//ÅŒã”ö‚É‘}“ü‚Ìê‡
 	if (*cellManager->GetNum() == -1) cellManager->SetNum(GetCellSize(cellManager->GetCell()) + 1);
 
-	Create(GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum()), *cellManager->GetInsertNum());
+	Create(GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum()), cellManager->GetInsertStr());
 
 	cellManager->ChangeState(new InsertState3);
 }
@@ -56,7 +60,7 @@ void InsertState3::Update()
 
 void InsertState3::Draw()
 {
-	printf("—v‘f:%d ‚ª %d ”Ô–Ú‚É‘}“ü‚³‚ê‚Ü‚µ‚½\n", *cellManager->GetInsertNum(), *cellManager->GetNum());
+	printf("—v‘f:%s ‚ª %d ”Ô–Ú‚É‘}“ü‚³‚ê‚Ü‚µ‚½\n", cellManager->GetInsertStr(), *cellManager->GetNum());
 	printf("\n---------------------------------------------\n");
 	printf("1.—v‘f‚Ì‘}“ü\n");
 	printf("2.—v‘f‘€ì‚É–ß‚é\n");

@@ -26,10 +26,14 @@ void EditState::Draw()
 //要素ある
 void EditState2::Update()
 {
-	scanf_s("%d", cellManager->GetInsertNum());
+	char str[128] = { "" };
+
+	scanf_s("%s", str, 128);
+
+	cellManager->SetInsertStr(str);
 
 	//編集
-	EditCell(cellManager->GetCell(), *cellManager->GetNum(), *cellManager->GetInsertNum());
+	EditCell(cellManager->GetCell(), *cellManager->GetNum(), cellManager->GetInsertStr());
 
 	cellManager->ChangeState(new EditState3);
 }
@@ -61,8 +65,8 @@ void EditState3::Update()
 
 void EditState3::Draw()
 {
-	printf("%d番目の要素が[%d]に変更されました。\n", 
-		*cellManager->GetNum(), *cellManager->GetInsertNum());
+	printf("%d番目の要素が[%s]に変更されました。\n", 
+		*cellManager->GetNum(), cellManager->GetInsertStr());
 	printf("\n-\n\n");
 
 	printf("\n------------------------------------------------------\n");

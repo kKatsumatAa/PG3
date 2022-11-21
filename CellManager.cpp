@@ -29,6 +29,14 @@ void CellManager::Draw()
 	cellState->Draw();
 }
 
+void CellManager::ClearOrder()
+{
+	for (int i = 0; i < _countof(order); i++)
+	{
+		order[i] = 0;
+	}
+}
+
 void CellManager::ChangeState(CellState* cellState)
 {
 	delete this->cellState;
