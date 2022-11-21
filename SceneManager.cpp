@@ -26,34 +26,26 @@ void SceneManager::ChangeScene(int sceneNo)
 
 void SceneManager::Update()
 {
-	timer++;
-
-	if (timer >= timerMax)
-	{
-		ChangeScene(sceneNum + 1);
-	}
+	system("pause");
 }
 
 void SceneManager::Draw()
 {
-	if (timer >= timerMax)
+	switch (sceneNum)
 	{
-		switch (sceneNum)
-		{
-		case SCENE::TITLE:
-			printf("TITLE\n");
-			break;
-		case SCENE::NEW_GAME:
-			printf("NewGame\n");
-			break;
-		case SCENE::GAME_PLAY:
-			printf("GamePlay\n");
-			break;
-		case SCENE::GAME_CLEAR:
-			printf("GameClear\n");
-			break;
-		}
-
-		timer = 0;
+	case SCENE::TITLE:
+		printf("TITLE\n\n");
+		break;
+	case SCENE::NEW_GAME:
+		printf("NewGame\n\n");
+		break;
+	case SCENE::GAME_PLAY:
+		printf("GamePlay\n\n");
+		break;
+	case SCENE::GAME_CLEAR:
+		printf("GameClear\n\n");
+		break;
 	}
+
+	ChangeScene(sceneNum + 1);
 }

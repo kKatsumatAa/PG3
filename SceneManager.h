@@ -14,8 +14,6 @@ private:
 	};
 
 	int sceneNum = SCENE::TITLE;
-	int timer = 0;
-	const int timerMax = 60;
 
 private:
 	//コンストラクタをprivate
