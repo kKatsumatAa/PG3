@@ -60,6 +60,7 @@ CELL* GetInsertCellAddres(CELL* cellStart, int cellNum)
 
 void DeleteCell(CELL* cellStart, int cellNum)
 {
+
 	//cellNumの回数分進む
 	for (int i = 0; i < cellNum; i++)
 	{
@@ -75,10 +76,16 @@ void DeleteCell(CELL* cellStart, int cellNum)
 	}
 	//削除したいセルの一個前のセルのnextに,
 	//削除したいセルの次のセルのアドレスを入れてあげる
-	cellStart->prev->next = cellStart->next;
+	if (cellStart->prev)
+	{
+		cellStart->prev->next = cellStart->next;
+	}
 	//削除したいセルの次のセルのprevに,
 	//削除したいセルの一個前のセルのアドレスを入れてあげる
-	cellStart->next->prev = cellStart->prev;
+	if (cellStart->next)
+	{
+		cellStart->next->prev = cellStart->prev;
+	}
 
 	//削除
 	delete cellStart;

@@ -29,6 +29,7 @@ void InitialState::Update()
 
 void InitialState::Draw()
 {
+	printf("\n------------------------------------------------------\n");
 	printf("[—v‘f‚Ì‘€ì]\n");
 	printf("1.—v‘f‚Ì•\¦\n");
 	printf("2.—v‘f‚Ì‘}“ü\n");

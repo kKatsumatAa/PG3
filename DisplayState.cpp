@@ -23,6 +23,7 @@ void DisplayState::Update()
 
 void DisplayState::Draw()
 {
+	printf("\n------------------------------------------------------\n");
 	printf("[要素の表示]\n");
 	printf("1.要素の一覧表示\n");
 	printf("2.順番を指定して要素を表示\n");

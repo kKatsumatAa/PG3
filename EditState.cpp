@@ -9,13 +9,14 @@ void EditState::Update()
 	//要素がなければ
 	if (*cellManager->GetNum() > GetCellSize(cellManager->GetCell()))
 		cellManager->ChangeState(new EditState4);
-	
+	//あれば
 	else 
 		cellManager->ChangeState(new EditState2);
 }
 
 void EditState::Draw()
 {
+	printf("\n------------------------------------------------------\n");
 	printf("[要素の編集]\n");
 	printf("編集したい要素の番号を指定してください。\n");
 	printf("\n-\n\n");

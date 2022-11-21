@@ -10,6 +10,7 @@ void InsertState::Update()
 
 void InsertState::Draw()
 {
+	printf("\n------------------------------------------------------\n");
 	printf("[リスト要素の挿入]\n");
 	printf("要素を何番目に追加するか指定してください。最後尾に追加する場合は[-1]と入力してください。\n");
 	printf("\n-\n\n");
