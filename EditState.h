@@ -20,3 +20,13 @@ public:
 	void Update() override;
 	void Draw() override;
 };
+
+class EditState4 : public CellState
+{
+private:
+
+
+public:
+	void Update() override;
+	void Draw() override;
+};

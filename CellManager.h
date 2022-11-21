@@ -22,6 +22,7 @@ private:
 
 	//‘}“ü—p
 	int num = 0;
+	//‘}“ü—p
 	int insertNum = 0;
 
 public:
