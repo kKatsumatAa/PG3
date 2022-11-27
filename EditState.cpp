@@ -65,7 +65,7 @@ void EditState3::Update()
 
 void EditState3::Draw()
 {
-	printf("%d番目の要素が[%s]に変更されました。\n",
+	printf("%d番目の要素の値が\"%s\"に変更されました。\n",
 		*cellManager->GetNum(), cellManager->GetInsertStr());
 	printf("\n-\n\n");
 

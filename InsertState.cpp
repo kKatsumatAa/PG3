@@ -62,7 +62,7 @@ void InsertState3::Update()
 
 void InsertState3::Draw()
 {
-	printf("—v‘f:%s ‚ª %d ”Ô–Ú‚É‘}“ü‚³‚ê‚Ü‚µ‚½\n", cellManager->GetInsertStr(), *cellManager->GetNum());
+	printf("—v‘f\"%s\" ‚ª %d ”Ô–Ú‚É‘}“ü‚³‚ê‚Ü‚µ‚½\n", cellManager->GetInsertStr(), *cellManager->GetNum());
 	printf("\n---------------------------------------------\n");
 	printf("1.—v‘f‚Ì‘}“ü\n");
 	printf("2.—v‘f‘€ì‚É–ß‚é\n");

@@ -49,7 +49,7 @@ void DeleteState2::Update()
 
 void DeleteState2::Draw()
 {
-	printf("%d”Ô–Ú‚Ì—v‘f[%s]‚ðíœ‚µ‚Ü‚µ‚½B\n", *cellManager->GetNum(),
+	printf("%d”Ô–Ú‚Ì—v‘f\"%s\"‚ðíœ‚µ‚Ü‚µ‚½B\n", *cellManager->GetNum(),
 		GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum())->val);
 	printf("\n-\n\n");
 
