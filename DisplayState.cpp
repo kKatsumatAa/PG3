@@ -72,6 +72,8 @@ void OrderDisplay::Update()
 
 	int num = 0;
 
+	//カウント用
+	*cellManager->GetNum() = 0;
 
 	int i = 0;
 	while (true)
@@ -86,9 +88,10 @@ void OrderDisplay::Update()
 
 		cellManager->GetOrder()[i] = num;
 		i++;
+		(*cellManager->GetNum()) = i;
 	}
 
-	if (cellManager->GetOrder()[0])
+	//if (cellManager->GetOrder()[0])
 	{
 		cellManager->ChangeState(new OrderDisplay2);
 	}
@@ -126,10 +129,11 @@ void OrderDisplay2::Draw()
 	int i = 0;
 	while (true)
 	{
-		if (cellManager->GetOrder()[i] == 0) { break; }
+		//最後入力した-1のカウント分減らす(-1)
+		if (*cellManager->GetNum() < i - 1) { break; }
 
 		printf("no:%d %s\n", cellManager->GetOrder()[i],
-			GetInsertCellAddres(cellManager->GetCell(), cellManager->GetOrder()[i] + 1)->val);
+			GetInsertCellAddres(cellManager->GetCell(), cellManager->GetOrder()[i])->val);
 
 		i++;
 	}

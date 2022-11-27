@@ -6,8 +6,8 @@ void DeleteState::Update()
 {
 	scanf_s("%d", cellManager->GetNum());
 
-	//—v‘f‚ª‚È‚¯‚ê‚Î
-	if (*cellManager->GetNum() > GetCellSize(cellManager->GetCell()))
+	//—v‘f‚ª‚È‚¯‚ê‚Î(æ“ª‚ÍŽg‚í‚È‚¢‚Ì‚Å-1)
+	if (*cellManager->GetNum() > GetCellSize(cellManager->GetCell()) - 1)
 	{
 		cellManager->ChangeState(new DeleteState3);
 	}
@@ -30,7 +30,7 @@ void DeleteState::Draw()
 void DeleteState2::Update()
 {
 	//íœ
-	DeleteCell(cellManager->GetCell(), *cellManager->GetNum());
+	DeleteCell(GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum()));
 
 	int num = 0;
 
@@ -49,9 +49,8 @@ void DeleteState2::Update()
 
 void DeleteState2::Draw()
 {
-	//GetInsertCellAddres()‚Í‘}“ü‚·‚é‚Æ‚«—p‚É]‚P‚µ‚Ä‚ ‚é‚Ì‚Ånum‚É{‚P‚·‚é
 	printf("%d”Ô–Ú‚Ì—v‘f[%s]‚ðíœ‚µ‚Ü‚µ‚½B\n", *cellManager->GetNum(),
-		GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum() + 1)->val);
+		GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum())->val);
 	printf("\n-\n\n");
 
 	printf("\n------------------------------------------------------\n");

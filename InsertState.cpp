@@ -27,8 +27,10 @@ void InsertState2::Update()
 
 	CELL* ptr;
 	//ÅŒã”ö‚É‘}“ü‚Ìê‡
-	if (*cellManager->GetNum() == -1) cellManager->SetNum(GetCellSize(cellManager->GetCell()) + 1);
-
+	if (*cellManager->GetNum() == -1)
+	{
+		cellManager->SetNum(GetCellSize(cellManager->GetCell()));
+	}
 	Create(GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum()), cellManager->GetInsertStr());
 
 	cellManager->ChangeState(new InsertState3);

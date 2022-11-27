@@ -27,24 +27,28 @@ void Create(CELL* currentCell, const char* insertNum)
 
 void Index(CELL* cellStart)
 {
-	int no = 1;
+	int no = 0;
 	//最後のcellになるまで出力
 	while (cellStart->next != nullptr)
 	{
 		cellStart = cellStart->next;
-		printf("no:%d ", no);
-		printf("prev:%p ", cellStart->prev);
-		printf("val:%s ", cellStart->val);
-		printf("this:(%p) ", cellStart);
-		printf("next:%p \n", cellStart->next);
+		printf(" %d:", no);
+		printf("\"%s\"", cellStart->val);
 		no++;
+
+		if (cellStart->next)
+		{
+			printf(",\n");
+		}
 	}
+
+	printf("\n");
 }
 
 CELL* GetInsertCellAddres(CELL* cellStart, int cellNum)
 {
-	//n番目に入れたいときはn番目にもともとあったセルの前に入れてあげる（-1）
-	for (int i = 0; i < cellNum - 1; i++)
+	//(一番最初のセルは使用させないため、+1してあげる)
+	for (int i = 0; i < cellNum + 1; i++)
 	{
 		if (cellStart->next)
 		{
@@ -59,57 +63,29 @@ CELL* GetInsertCellAddres(CELL* cellStart, int cellNum)
 	return cellStart;
 }
 
-void DeleteCell(CELL* cellStart, int cellNum)
+void DeleteCell(CELL* currentCell)
 {
-
-	//cellNumの回数分進む
-	for (int i = 0; i < cellNum; i++)
-	{
-		if (cellStart->next)
-		{
-			//最後のセルじゃないとき
-			cellStart = cellStart->next;
-		}
-		else
-		{
-			break;
-		}
-	}
 	//削除したいセルの一個前のセルのnextに,
 	//削除したいセルの次のセルのアドレスを入れてあげる
-	if (cellStart->prev)
+	if (currentCell->prev)
 	{
-		cellStart->prev->next = cellStart->next;
+		currentCell->prev->next = currentCell->next;
 	}
 	//削除したいセルの次のセルのprevに,
 	//削除したいセルの一個前のセルのアドレスを入れてあげる
-	if (cellStart->next)
+	if (currentCell->next)
 	{
-		cellStart->next->prev = cellStart->prev;
+		currentCell->next->prev = currentCell->prev;
 	}
 
 	//削除
-	delete cellStart;
+	delete currentCell;
 }
 
-void EditCell(CELL* cellStart, int cellNum, const char* insertNum)
+void EditCell(CELL* currentCell, const char* insertNum)
 {
-	//cellNumの回数分進む
-	for (int i = 0; i < cellNum; i++)
-	{
-		if (cellStart->next)
-		{
-			//最後のセルじゃないとき
-			cellStart = cellStart->next;
-		}
-		else
-		{
-			break;
-		}
-	}
-
 	//中身を変える
-	strcpy_s(cellStart->val, insertNum);
+	strcpy_s(currentCell->val, insertNum);
 }
 
 int GetCellSize(CELL* cellStart)

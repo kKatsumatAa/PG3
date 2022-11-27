@@ -17,8 +17,8 @@ void Index(CELL* cellStart);
 
 CELL* GetInsertCellAddres(CELL* cellStart, int cellNum);
 
-void DeleteCell(CELL* cellStart, int cellNum);
+void DeleteCell(CELL* currentCell);
 
-void EditCell(CELL* cellStart, int cellNum, const char* insertNum);
+void EditCell(CELL* currentCell, const char* insertNum);
 
 int GetCellSize(CELL* cellStart);

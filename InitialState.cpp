@@ -21,8 +21,8 @@ void InitialState::Update()
 	case 4:
 		cellManager->ChangeState(new DeleteState);
 		break;
-	case 5:
-		//cellManager->ChangeState(new );
+		//case 5:
+			//cellManager->ChangeState(new );
 		break;
 	}
 }
@@ -39,7 +39,7 @@ void InitialState::Draw()
 		printf("3.要素の編集\n");
 		printf("4.要素の削除\n");
 	}
-	printf("5.要素の並び替え(オプション)\n");
+	//printf("5.要素の並び替え(オプション)\n");
 	printf("\n---------------------------------\n");
 	printf("操作を選択してください\n");
 	printf("-\n\n");
