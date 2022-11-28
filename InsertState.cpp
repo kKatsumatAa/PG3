@@ -25,12 +25,12 @@ void InsertState2::Update()
 
 	cellManager->SetInsertStr(str);
 
-	CELL* ptr;
 	//ÅŒã”ö‚É‘}“ü‚Ìê‡
 	if (*cellManager->GetNum() == -1)
 	{
 		cellManager->SetNum(GetCellSize(cellManager->GetCell()));
 	}
+	//æ“ª‚ÍŽg‚í‚È‚¢‚½‚ß{‚P‚µ‚Ä‚¢‚é‚ªA‘}“ü‚µ‚½‚¢êŠ‚É‚à‚Æ‚à‚Æ‚ ‚Á‚½ƒZƒ‹‚Ì‘O‚É‘}“ü‚µ‚½‚¢‚Ì‚Å-1‚Å+-0‚É‚·‚é
 	Create(GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum() - 1), cellManager->GetInsertStr());
 
 	cellManager->ChangeState(new InsertState3);

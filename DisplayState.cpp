@@ -132,7 +132,7 @@ void OrderDisplay2::Draw()
 		//ÅŒã“ü—Í‚µ‚½-1‚ÌƒJƒEƒ“ƒg•ªŒ¸‚ç‚·(-1)
 		if (*cellManager->GetNum() - 1 < i) { break; }
 
-		printf("%d: \"%s\",\n", cellManager->GetOrder()[i],
+		printf(" %d: \"%s\",\n", cellManager->GetOrder()[i],
 			GetInsertCellAddres(cellManager->GetCell(), cellManager->GetOrder()[i])->val);
 
 		i++;
