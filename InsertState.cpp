@@ -31,7 +31,7 @@ void InsertState2::Update()
 	{
 		cellManager->SetNum(GetCellSize(cellManager->GetCell()));
 	}
-	Create(GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum()), cellManager->GetInsertStr());
+	Create(GetInsertCellAddres(cellManager->GetCell(), *cellManager->GetNum() - 1), cellManager->GetInsertStr());
 
 	cellManager->ChangeState(new InsertState3);
 }
