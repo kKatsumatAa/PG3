@@ -23,7 +23,7 @@ private:
 	//挿入用要素番号
 	int num = 0;
 	//挿入用
-	const char* insertStr;
+	char insertStr[128];
 	//順番指定用
 	int order[100];
 
@@ -40,7 +40,7 @@ public:
 	const char* GetInsertStr() { return insertStr; }
 
 	void SetNum(int num) { this->num = num; }
-	void SetInsertStr(const char* str) { this->insertStr = str; }
+	void SetInsertStr(const char* str) { strcpy_s(insertStr, str); }
 
 	//オーダーをクリア
 	void ClearOrder();
