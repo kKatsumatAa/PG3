@@ -28,7 +28,7 @@ void Create(CELL* currentCell, const char* insertNum)
 void Index(CELL* cellStart)
 {
 	int no = 0;
-	//最後のcellになるまで出力
+	//最後のcellになるまで出力（先頭のセルを使ってしまうと、ここがおかしくなる）
 	while (cellStart->next != nullptr)
 	{
 		cellStart = cellStart->next;

@@ -6,7 +6,7 @@ void DeleteState::Update()
 {
 	scanf_s("%d", cellManager->GetNum());
 
-	//要素がなければ(先頭は使わないので-1)
+	//要素がなければ(添え字が0からなので-1（0番目があるとサイズが1になる）)
 	if (*cellManager->GetNum() > GetCellSize(cellManager->GetCell()) - 1)
 	{
 		cellManager->ChangeState(new DeleteState3);

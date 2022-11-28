@@ -91,10 +91,7 @@ void OrderDisplay::Update()
 		(*cellManager->GetNum()) = i;
 	}
 
-	//if (cellManager->GetOrder()[0])
-	{
-		cellManager->ChangeState(new OrderDisplay2);
-	}
+	cellManager->ChangeState(new OrderDisplay2);
 }
 
 void OrderDisplay::Draw()
