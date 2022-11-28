@@ -54,10 +54,10 @@ void AllDisplay::Update()
 void AllDisplay::Draw()
 {
 	printf("[要素の一覧表示]\n");
-	printf("要素数:%d\n", GetCellSize(cellManager->GetCell()));
 	printf("要素一覧:{\n");
 	Index(cellManager->GetCell());
 	printf("}\n");
+	printf("\n要素数:%d\n", GetCellSize(cellManager->GetCell()));
 	printf("\n------------------------------------------------------\n");
 	printf("1.要素の表示に戻る\n");
 	printf("2.要素の操作に戻る\n");
@@ -76,19 +76,23 @@ void OrderDisplay::Update()
 	*cellManager->GetNum() = 0;
 
 	int i = 0;
+	//改行を認識するために文字列で取得、改行じゃなかった場合はintに変換する
+	char buff[100];
+	fgets(buff, sizeof(buff), stdin);
 	while (true)
 	{
-		scanf_s("%d", &num);
-		printf(",");
+		fgets(buff, sizeof(buff), stdin);
 
-		if (num == -1)
+		if (buff[0] == '\n') { break; }
+		else
 		{
-			break;
-		}
+			printf(",");
 
-		cellManager->GetOrder()[i] = num;
-		i++;
-		(*cellManager->GetNum()) = i;
+			cellManager->GetOrder()[i] = atoi(buff);
+
+			i++;
+			(*cellManager->GetNum()) = i;
+		}
 	}
 
 	cellManager->ChangeState(new OrderDisplay2);
@@ -97,7 +101,7 @@ void OrderDisplay::Update()
 void OrderDisplay::Draw()
 {
 	printf("[順番を指定して要素を表示]\n");
-	printf("表示したい要素の順番を指定してください。[-1]で確定。\n");
+	printf("表示したい要素の順番を指定してください。何も入力なしで確定。\n");
 	printf("\n\n-\n");
 }
 

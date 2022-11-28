@@ -3,7 +3,13 @@
 //-------------------------------------------------------------
 void InsertState::Update()
 {
-	scanf_s("%d", cellManager->GetNum());
+	//改行を認識するために文字列で取得、改行じゃなかった場合はintに変換する
+	char buff[100];
+	fgets(buff, sizeof(buff), stdin);
+	fgets(buff, sizeof(buff), stdin);
+
+	if (buff[0] == '\n') { cellManager->SetNum(-1); }
+	else                 { cellManager->SetNum(atoi(buff)); }
 
 	cellManager->ChangeState(new InsertState2);
 }
@@ -12,7 +18,7 @@ void InsertState::Draw()
 {
 	printf("\n------------------------------------------------------\n");
 	printf("[リスト要素の挿入]\n");
-	printf("要素を何番目に追加するか指定してください。最後尾に追加する場合は[-1]と入力してください。\n");
+	printf("要素を何番目に追加するか指定してください。最後尾に追加する場合は何も入力しないでください。\n");
 	printf("\n-\n\n");
 }
 
