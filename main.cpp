@@ -1,42 +1,36 @@
 #include<stdio.h>
-
-template<typename Type>
-Type Min(Type a, Type b)
-{
-	if (a <= b) { return a };
-
-	return b;
-}
-
-//charŒ^‚Ì
-template<>
-char Min(char a, char b)
-{
-	printf("”šˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ\n");
-
-	return 0;
-}
-
+#include"Enemy.h"
 
 int main()
 {
-	int a = 1, b = 2;
+	static const int numMax = 5;
 
-	float af = 3.0f, bf = 1.0f;
+	Enemy enemy[numMax];
+	for (int i = 0; i < numMax; i++)
+	{
+		enemy[i].Initialize(i);
+	}
 
-	double ad = -1.0, bd = -10.0;
+	printf("ƒGƒ“ƒ^[‚Å“G‚ğ“|‚·\n");
 
-	char ac = 'a', bc = 'b';
+	static const int strMax = 128;
+	static char str[strMax];
 
-	//ˆ—
-	printf("%d\n", Min<int>(a, b));
+	while (true)
+	{
+		for (int i = 0; i < numMax; i++)
+		{
+			enemy[i].Update();
+			enemy[i].Draw();
+		}
 
-	printf("%f\n", Min<float>(af, bf));
+		fgets(str, strMax, stdin);
 
-	printf("%lf\n", Min<double>(ad, bd));
-
-	Min<char>(ac, bc);
-	
+		if (str[0] == '\n')
+		{
+			enemy[0].SetIsAlive(false);
+		}
+	}
 
 	return 0;
 }
